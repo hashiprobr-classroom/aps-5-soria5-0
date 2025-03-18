@@ -62,14 +62,10 @@ public class Data extends Referencia{
         // CONDIÇÕES DIA
         if (dia < 1) {
             this.dia = 1;
+        } else if (dia > limites.get(this.mes)) {
+            this.dia = limites.get(this.mes);
         } else {
             this.dia = dia;
-        }
-
-        // CONDIÇÃO FINAL
-        int limite = limites.get(mes);
-        if (dia > limite) {
-            this.dia = limite;
         }
     }
 
