@@ -36,8 +36,19 @@ public class AgendaTest {
     }
 
     @Test
-    void adicionaInvalido() {
-        Evento evento = eventoInvalido();
+    void adicionaValido() {
+        Evento eventoVal = eventoValido();  // é um mock, separei para ter dois tipos, valido e invalido
+        a.adiciona(eventoVal);
+        assertEquals(1, a.getEventos().size());
+        assertEquals(eventoVal, a.getEventos().get(0));
+    }
 
+    @Test
+    void adicionaInvalido() {
+        Evento eventoInv = eventoInvalido(); // mock
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> {
+            a.adiciona(eventoInv);
+        });
+        assertEquals("Evento inválido!", e.getMessage());
     }
 }

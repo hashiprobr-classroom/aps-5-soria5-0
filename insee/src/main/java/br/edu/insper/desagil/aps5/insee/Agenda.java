@@ -16,8 +16,11 @@ public class Agenda {
     }
 
     public void adiciona(Evento evento) {
+
         if (evento.valido()) {
             this.eventos.add(evento);
+        } else {
+            throw new IllegalArgumentException("Evento inválido!");
         }
     }
 }
